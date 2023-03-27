@@ -1,5 +1,5 @@
 {
-  "name": "cm-themes",
+  "name": "@bpmn-io/cm-theme",
   "version": "0.1.0-alpha.0",
   "description": "Codemirror themes for bpmn-io",
   "main": "dist/index.js",

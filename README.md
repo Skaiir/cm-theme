@@ -1,4 +1,4 @@
 # Codemirror themes
 
-A collection of codemirror themes for bpmn-io projects
+Codemirror dark and light themes for bpmn-io projects
 
