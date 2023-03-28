@@ -15,13 +15,14 @@ const colors = {
   white: '#ffffff',
   mossGreen: '#7ab6aa',
   iceBlue: '#6cbfd8',
-  waterBlue: '#497299',
-  deepBlue: '#4d6e9d',
-  red: '#ad3832',
-  orange: '#c2765d',
+  waterBlue: '#065aaa',
+  brightBlue: '#0a56b9',
+  deepBlue: '#355472',
+  red: '#9f1c15',
+  orangeBrown: '#b4502f',
   yellow: '#debd71',
-  green: '#93b57e',
-  purple: '#a36b9c'
+  lila: '#9a4890',
+  purple: '#5b2c83'
 };
 
 const colorByRole = {
@@ -31,13 +32,12 @@ const colorByRole = {
   tooltipBackground: colors.offWhite,
   error: colors.red,
   warning: colors.yellow,
+  invalid: '#b40000'
 };
-
-const invalid = '#b40000';
 
 export const theme = EditorView.theme(
   {
-    '&': { color: colors.black, backgroundColor: colors.white },
+    '&': { color: colors.black, backgroundColor: colorByRole.lightBackground },
     '.cm-content': { caretColor: colors.darkGrey },
     '.cm-cursor, .cm-dropCursor': { borderLeftColor: colors.darkGrey },
     '&.cm-focused .cm-selectionBackground, .cm-selectionBackground, .cm-content ::selection':
@@ -123,7 +123,7 @@ export const theme = EditorView.theme(
 
 export const highlightStyle = syntaxHighlighting(HighlightStyle.define([
   {
-    tag: [ t.name, t.deleted, t.character, t.propertyName, t.macroName, t.variableName ],
+    tag: [ t.macroName, t.variableName ],
     color: colors.waterBlue
   },
   {
@@ -131,31 +131,33 @@ export const highlightStyle = syntaxHighlighting(HighlightStyle.define([
     color: colors.waterBlue,
     fontWeight: 'bold'
   },
-  { tag: [ t.function(t.variableName) ], color: colors.deepBlue },
-  { tag: [ t.labelName ], color: colors.orange },
   {
-    tag: [ t.color, t.constant(t.name), t.standard(t.name) ],
+    tag: [ t.color, t.name, t.definition(t.name), t.constant(t.name), t.standard(t.name), t.propertyName, ],
     color: colors.deepBlue
   },
-  { tag: [ t.definition(t.name), t.separator ], color: colors.green },
+  {
+    tag: [ t.definition(t.variableName), t.function(t.variableName), t.function(t.propertyName) ],
+    color: colors.brightBlue,
+  },
+  { tag: [ t.labelName ], color: colors.orangeBrown },
   {
     tag: [ t.annotation ],
-    color: invalid
+    color: colorByRole.invalid
   },
   {
-    tag: [ t.number, t.changed, t.annotation, t.modifier, t.self, t.namespace ],
+    tag: [ t.number, t.changed, t.annotation, t.modifier, t.self, t.namespace, t.atom, t.bool, t.special(t.variableName) ],
     color: colors.red
   },
   {
     tag: [ t.typeName, t.className, t.attributeName ],
-    color: colors.yellow
+    color: colors.lila
   },
   {
     tag: [ t.operator, t.operatorKeyword, t.tagName, t.keyword ],
     color: colors.purple
   },
   {
-    tag: [ t.angleBracket, t.squareBracket,t.brace ],
+    tag: [ t.angleBracket, t.squareBracket, t.brace, t.separator, t.punctuation ],
     color: colors.midGrey
   },
   {
@@ -166,7 +168,7 @@ export const highlightStyle = syntaxHighlighting(HighlightStyle.define([
     tag: [ t.quote ],
     color: colors.darkGrey
   },
-  { tag: [ t.string ], color: colors.orange },
+  { tag: [ t.string, t.character, t.deleted ], color: colors.orangeBrown },
   {
     tag: t.link,
     color: colors.mossGreen,
@@ -190,12 +192,11 @@ export const highlightStyle = syntaxHighlighting(HighlightStyle.define([
     color: colors.midGrey
   },
   { tag: [ t.heading5, t.heading6, t.processingInstruction, t.inserted ], color: colors.grey },
-  { tag: [ t.atom, t.bool, t.special(t.variableName) ], color: colors.red },
   {
     tag: [ t.contentSeparator ],
     color: colors.yellow
   },
-  { tag: t.invalid, color: colors.midGrey, borderBottom: `1px dotted ${invalid}` }
+  { tag: t.invalid, color: colors.midGrey, borderBottom: `1px dotted ${colorByRole.invalid}` }
 ]));
 
 export default [

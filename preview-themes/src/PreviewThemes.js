@@ -17,7 +17,27 @@ export default function PreviewThemes() {
         <SimpleCodeMirrorInstance
           language="javascript"
           darkMode={darkMode}
-          value={`for (let i = 0; i < 10; i++) {
+        value={`import { darkTheme, lightTheme } from '@bpmn-io/cm-theme';
+import { EditorView } from '@codemirror/view';
+
+
+// ...
+
+const extensions = [
+    lightTheme
+];
+
+// ...
+
+new EditorView({
+    state: EditorState.create({
+      doc: value,
+      extensions: extensions
+    }),
+    parent: container
+});
+
+for (let i = 0; i < 10; i++) {
   console.log(i);
 }
 
@@ -25,6 +45,13 @@ if(true) {
   console.log('true');
 } else {
   console.log('false');
+}
+
+class Rectangle {
+  constructor(height, width) {
+    this.height = height;
+    this.width = width;
+  }
 }`} />
         <h2>CSS</h2>
         <SimpleCodeMirrorInstance
