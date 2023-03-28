@@ -6,10 +6,10 @@
 Codemirror themes centralized in an effort to create consistency across the bpmn-io suite.
 
 ## Light theme
-![image](https://user-images.githubusercontent.com/17801113/228022199-49569983-6d47-4ca5-89eb-63782950734b.png)
+![image](https://user-images.githubusercontent.com/17801113/228143586-68e4a262-1159-4bec-877f-c2c2751a6ce7.png)
 
 ## Dark theme
-![image](https://user-images.githubusercontent.com/17801113/228022240-c44638c7-3058-436a-87ff-567aa382fffb.png)
+![image](https://user-images.githubusercontent.com/17801113/228143676-d2ecb004-4c2d-4ada-b9ed-b68f4b0c5b63.png)
 
 ## Usage
 
